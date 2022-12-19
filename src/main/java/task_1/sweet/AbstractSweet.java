@@ -1,4 +1,4 @@
-package sweet;
+package task_1.sweet;
 
 public abstract class AbstractSweet {
     private String name;

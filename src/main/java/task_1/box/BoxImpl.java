@@ -1,6 +1,6 @@
-package box;
+package task_1.box;
 
-import sweet.AbstractSweet;
+import task_1.sweet.AbstractSweet;
 
 public interface BoxImpl {
 

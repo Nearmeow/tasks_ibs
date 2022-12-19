@@ -1,8 +1,10 @@
-import box.Box;
-import sweet.AbstractSweet;
-import sweet.Chocolate;
-import sweet.Marmalade;
-import sweet.Marshmallow;
+package task_1;
+
+import task_1.box.Box;
+import task_1.sweet.AbstractSweet;
+import task_1.sweet.Chocolate;
+import task_1.sweet.Marmalade;
+import task_1.sweet.Marshmallow;
 
 import java.util.Scanner;
 

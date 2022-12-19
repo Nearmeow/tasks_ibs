@@ -1,4 +1,4 @@
-package sweet;
+package task_1.sweet;
 
 public class Marmalade extends AbstractSweet {
 

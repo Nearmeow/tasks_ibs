@@ -1,4 +1,4 @@
-package sweet;
+package task_1.sweet;
 
 public class Chocolate extends AbstractSweet {
 
