@@ -14,7 +14,7 @@ public class WordProcessor {
 
     public WordProcessor(Path path) {
         this.path = path;
-        map = new TreeMap<>();
+        map = new TreeMap<>(new WordComparator());
         getWords();
     }
 
@@ -35,7 +35,7 @@ public class WordProcessor {
         try(BufferedReader fileReader = Files.newBufferedReader(path)) {
             String line;
             while((line = fileReader.readLine()) != null) {
-                String[] arr = line.split("[*&^%$#!\\t,.:;'-/\"><?_ ]".strip());
+                String[] arr = line.split("[\\p{Punct}\\t ]".strip());
                 for (String elem : arr) {
                     putElemToMap(elem);
                 }
