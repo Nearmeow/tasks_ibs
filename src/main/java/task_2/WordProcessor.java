@@ -35,7 +35,7 @@ public class WordProcessor {
         try(BufferedReader fileReader = Files.newBufferedReader(path)) {
             String line;
             while((line = fileReader.readLine()) != null) {
-                String[] arr = line.split("[\\p{Punct}\\t ]".strip());
+                String[] arr = line.split("[^A-Za-zА-яЁё]".strip());
                 for (String elem : arr) {
                     putElemToMap(elem);
                 }
