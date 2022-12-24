@@ -11,8 +11,6 @@ import java.time.format.DateTimeParseException;
 public class FileNameReader {
     private BufferedReader reader;
     private Path path;
-    private Integer currency;
-    private LocalDate dateAfter;
 
     public FileNameReader(BufferedReader reader) {
         this.reader = reader;
@@ -23,49 +21,42 @@ public class FileNameReader {
         return path;
     }
 
-    public Integer getCurrency() {
-        readCurrency();
-        return currency;
-    }
-
-    public LocalDate getDateAfter() {
-        readDateAfter();
-        System.out.println(dateAfter);
-        return dateAfter;
-    }
-
-    private void readDateAfter() {
+    public LocalDate readDateAfter() {
         System.out.println();
         System.out.println("Введите дату в одном из форматов «ДД.ММ.ГГГГ», «ДД.ММ,ГГ», «ДД/ММ/ГГГГ» и «ДД/ММ/ГГ»:");
+        LocalDate localDate = null;
         try {
             String stringDate = reader.readLine();
-            dateAfter = LocalDate.parse(stringDate, CustomDateFormatter.PARSE_FORMATTER);
+            localDate = LocalDate.parse(stringDate, CustomDateFormatter.PARSE_FORMATTER);
         } catch (DateTimeParseException exception) {
             System.out.println("Введена неверная дата!");
-            readDateAfter();
+            localDate = readDateAfter();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return localDate;
     }
 
-    private void readCurrency() {
+    public Integer readCurrency() {
         System.out.println();
         System.out.println("Введите код валюты, для вывода ценных бумаг:\n" +
                 "1 - для EU\n" +
                 "2 - для USD\n" +
                 "3 - для RUB");
+        Integer cur = null;
         try {
-            currency = Integer.parseInt(reader.readLine());
-            if (currency != 1 && currency != 2 && currency != 3) {
+            cur = Integer.parseInt(reader.readLine());
+            if (cur != 1 && cur != 2 && cur != 3) {
                 System.out.println("Введен неверный код валюты!");
-                readCurrency();
+                cur = readCurrency();
             }
         } catch (NumberFormatException exception) {
             System.out.println("Введен неверный код валюты!");
-            readCurrency();
+            cur = readCurrency();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return cur;
     }
 
     private void processPath() {

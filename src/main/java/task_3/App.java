@@ -26,10 +26,10 @@ public class App {
             InfoPrinter.printCompaniesInfo(companies, "Список компаний:");
             InfoPrinter.printOldSecurities(companyHandler.getOldSecurities());
 
-            InfoPrinter.printCompaniesInfo(companyHandler.getCompaniesAfterDate(fileNameReader.getDateAfter())
+            InfoPrinter.printCompaniesInfo(companyHandler.getCompaniesAfterDate(fileNameReader.readDateAfter())
                     , "Компании, основанные после указанной даты:"
             );
-            InfoPrinter.printSecuritiesByCurrency(companyHandler.getSecurityByCurrency(fileNameReader.getCurrency()));
+            InfoPrinter.printSecuritiesByCurrency(companyHandler.getSecurityByCurrency(fileNameReader.readCurrency()));
 
 
         } catch (IOException e) {
