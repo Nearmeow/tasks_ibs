@@ -24,6 +24,7 @@ public class InfoPrinter {
                     , sec.getOwner().getName()
             );
         }
+        System.out.println("Общее количество ценных бумаг с истекшим сроком - " + oldSecurities.size());
     }
 
     public static void printSecuritiesByCurrency(List<Security> securityList) {
