@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CompanyHandler {
 
@@ -43,20 +45,7 @@ public class CompanyHandler {
     }
 
     public List<Security> getSecurityByCurrency(Integer currency) {
-        Map<Integer, List<Security>> secMapByCurrency = new HashMap<>();
-        secMapByCurrency.put(1, new ArrayList<>());
-        secMapByCurrency.put(2, new ArrayList<>());
-        secMapByCurrency.put(3, new ArrayList<>());
-        for (Security sec : allSecurities) {
-            if (sec.getCurrencies().contains(Currency.EU)) {
-                secMapByCurrency.get(1).add(sec);
-            } else if (sec.getCurrencies().contains(Currency.USD)) {
-                secMapByCurrency.get(2).add(sec);
-            } else if (sec.getCurrencies().contains(Currency.RUB)) {
-                secMapByCurrency.get(3).add(sec);
-            }
-        }
-        return  secMapByCurrency.get(currency);
+        return allSecurities.stream().filter(p -> p.getCurrencies().contains(Currency.values()[currency-1])).collect(Collectors.toList());
     }
 
     private void getAllSecurities() {
