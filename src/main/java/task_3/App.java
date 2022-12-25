@@ -25,13 +25,12 @@ public class App {
 
             InfoPrinter.printCompaniesInfo(companies, "Список компаний:");
             InfoPrinter.printOldSecurities(companyHandler.getOldSecurities());
-
             InfoPrinter.printCompaniesInfo(companyHandler.getCompaniesAfterDate(fileNameReader.readDateAfter())
                     , "Компании, основанные после указанной даты:"
             );
             InfoPrinter.printSecuritiesByCurrency(companyHandler.getSecurityByCurrency(fileNameReader.readCurrency()));
 
-
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
