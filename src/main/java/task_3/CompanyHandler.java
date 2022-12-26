@@ -6,11 +6,8 @@ import task_3.model.Security;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CompanyHandler {
 
@@ -24,24 +21,11 @@ public class CompanyHandler {
     }
 
     public List<Security> getOldSecurities() {
-        List<Security> oldSecurities = new ArrayList<>();
-        for (Security sec : allSecurities) {
-            if (sec.getDate().isBefore(LocalDate.now())) {
-                oldSecurities.add(sec);
-            }
-
-        }
-        return oldSecurities;
+        return allSecurities.stream().filter(s -> s.getDate().isBefore(LocalDate.now())).collect(Collectors.toList());
     }
 
     public List<Company> getCompaniesAfterDate(LocalDate afterDate) {
-        List<Company> resultList = new ArrayList<>();
-        for (Company com : companies) {
-            if (com.getFounded().isAfter(afterDate)) {
-                resultList.add(com);
-            }
-        }
-        return resultList;
+        return companies.stream().filter(s -> s.getFounded().isAfter(afterDate)).collect(Collectors.toList());
     }
 
     public List<Security> getSecurityByCurrency(Integer currency) {

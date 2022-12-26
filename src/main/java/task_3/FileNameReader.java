@@ -40,8 +40,8 @@ public class FileNameReader {
     public Integer readCurrency() {
         System.out.println();
         System.out.println("Введите код валюты, для вывода ценных бумаг:\n" +
-                "1 - для EU\n" +
-                "2 - для USD\n" +
+                "1 - для USD\n" +
+                "2 - для EU\n" +
                 "3 - для RUB");
         Integer cur = null;
         try {
